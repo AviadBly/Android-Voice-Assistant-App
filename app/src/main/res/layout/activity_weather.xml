@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".WeatherActivity"
+    android:background="@drawable/weather_background"
+    >
+
+
+    <TextView
+        android:id="@+id/location_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="#612196F3"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Location: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+
+    <TextView
+        android:id="@+id/temperature_text_view"
+        android:fontFamily="sans-serif-smallcaps"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#612196F3"
+        android:text="Temperature: "
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/humidity_text_view"
+        android:fontFamily="sans-serif-smallcaps"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#612196F3"
+        android:text="Humidity: "
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+
+
+    <TextView
+        android:id="@+id/pressure_text_view"
+        android:fontFamily="sans-serif-smallcaps"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pressure: "
+        android:textSize="25sp"
+        android:background="#612196F3"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/description_text_view"
+        android:fontFamily="sans-serif-smallcaps"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description: "
+        android:textSize="25sp"
+        android:background="#612196F3"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"/>
+
+    <Button
+        android:id="@+id/BackButton"
+        android:layout_width="85dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:onClick="BackClick"
+        android:text="Go Back">
+
+    </Button>
+
+</LinearLayout>

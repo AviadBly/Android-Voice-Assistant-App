@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDF5E6">
+
+    <!-- App title -->
+    <TextView
+        android:id="@+id/main_title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Simple Voice Assistant"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:paddingTop="48dp"
+        android:textColor="#333333"
+        android:paddingBottom="16dp"/>
+
+    <!-- Alan button -->
+    <com.alan.alansdk.button.AlanButton
+        android:id="@+id/Alan_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Commands list title -->
+    <TextView
+        android:id="@+id/commands_title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Commands:"
+        android:textColor="#333333"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:paddingTop="32dp"
+        android:paddingBottom="16dp"/>
+
+    <!-- Commands list -->
+    <ListView
+        android:id="@+id/commands"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.5"
+        android:dividerHeight="10dp"
+        android:scrollbars="vertical"
+        android:overScrollMode="always"
+        android:padding="16dp"
+        android:textStyle="bold"
+        android:clipToPadding="false"
+        android:listSelector="#F5DEB3"
+        android:textColor="#333333"
+        />
+
+</LinearLayout>
