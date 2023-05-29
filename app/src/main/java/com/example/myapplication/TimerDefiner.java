@@ -17,8 +17,12 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+
+/**
+ * This activity allows the user to define and start a timer.
+ */
 public class TimerDefiner extends AppCompatActivity {
-    private static  long START_TIME_IN_MILLIS = 600000;
+    private static final long START_TIME_IN_MILLIS = 600000;
 
     private TextView mTextViewCountDown;
     private Button mButtonStartPause;
@@ -37,13 +41,11 @@ public class TimerDefiner extends AppCompatActivity {
         setContentView(R.layout.activity_timer_definer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
-
         mButtonStartPause = findViewById(R.id.startButton);
         mButtonReset = findViewById(R.id.CancelButton);
-        minutes=findViewById(R.id.minutes);
-        seconds=findViewById(R.id.seconds);
+        minutes = findViewById(R.id.minutes);
+        seconds = findViewById(R.id.seconds);
 
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,53 +65,53 @@ public class TimerDefiner extends AppCompatActivity {
             }
         });
 
-
         updateCountDownText();
+
         if (getIntent().hasExtra("minutes") && getIntent().hasExtra("seconds")) {
-            // get the hours and minutes extras from the intent
             int minutes = getIntent().getIntExtra("minutes", 0);
             int seconds = getIntent().getIntExtra("seconds", 0);
-            setTime(minutes,seconds);
-
+            setTime(minutes, seconds);
         }
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
-                finish(); // optional, depending on your desired behavior
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    public void setTime(int minutes, int seconds)
-    {
+    /**
+     * Set the time for the timer using the provided minutes and seconds.
+     *
+     * @param minutes the minutes value for the timer
+     * @param seconds the seconds value for the timer
+     */
+    public void setTime(int minutes, int seconds) {
+        long milliminutes = minutes * 60000L;
+        long milliseconds = seconds * 1000L;
 
+        mTimeLeftInMillis = milliminutes + milliseconds;
 
-
-
-
-            long milliminutes = minutes * 60000L;
-            long milliseconds = seconds * 1000L;
-
-            mTimeLeftInMillis = milliminutes + milliseconds;
-
-            if (minutes > 59 || seconds > 59 || minutes < 0 || seconds < 0) {
-                Toast.makeText(this, "Invalid values entered.", Toast.LENGTH_SHORT).show();
-            } else {
-                updateCountDownText();
-            }
-
-
-
+        if (minutes > 59 || seconds > 59 || minutes < 0 || seconds < 0) {
+            Toast.makeText(this, "Invalid values entered.", Toast.LENGTH_SHORT).show();
+        } else {
+            updateCountDownText();
+        }
     }
-    public void setTime(View v)
-    {
 
+    /**
+     * Set the time for the timer using the values entered in the EditText fields.
+     *
+     * @param v the View that was clicked
+     */
+    public void setTime(View v) {
         String minutesStr = minutes.getText().toString();
         String secondsStr = seconds.getText().toString();
 
@@ -130,10 +132,11 @@ public class TimerDefiner extends AppCompatActivity {
                 updateCountDownText();
             }
         }
-
-
     }
 
+    /**
+     * Start the timer.
+     */
     private void startTimer() {
         mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
@@ -156,6 +159,9 @@ public class TimerDefiner extends AppCompatActivity {
         mButtonReset.setVisibility(View.INVISIBLE);
     }
 
+    /**
+     * Pause the timer.
+     */
     private void pauseTimer() {
         mCountDownTimer.cancel();
         mTimerRunning = false;
@@ -163,6 +169,9 @@ public class TimerDefiner extends AppCompatActivity {
         mButtonReset.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Reset the timer to its initial value.
+     */
     private void resetTimer() {
         mTimeLeftInMillis = START_TIME_IN_MILLIS;
         updateCountDownText();
@@ -170,6 +179,9 @@ public class TimerDefiner extends AppCompatActivity {
         mButtonStartPause.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Update the text displayed in the countdown TextView.
+     */
     private void updateCountDownText() {
         int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
         int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
